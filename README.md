@@ -15,7 +15,7 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 You can install the package via composer:
 
 ```bash
-composer require spatie/package-skeleton-laravel
+composer require spatie/laravel-disk-monitor
 ```
 
 You can publish and run the migrations with:
