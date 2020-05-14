@@ -1,7 +1,7 @@
 # Monitor metrics of Laravel disks
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-disk-monitor.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-disk-monitor)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-disk-monitor/run-tests?label=tests)](https://github.com/spatie/laravel-disk-monitor/actions?query=workflow%3Arun-tests+branch%3Amaster)
+![run-tests](https://github.com/spatie/laravel-disk-monitor/workflows/run-tests/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-disk-monitor.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-disk-monitor)
 
 ## Support us
