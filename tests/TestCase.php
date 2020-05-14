@@ -4,7 +4,6 @@ namespace Spatie\DiskMonitor\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\DiskMonitor\DiskMonitorServiceProvider;
-use Spatie\DiskMonitor\SkeletonServiceProvider;
 
 class TestCase extends Orchestra
 {
