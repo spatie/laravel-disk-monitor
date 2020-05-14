@@ -5,8 +5,6 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-disk-monitor.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-disk-monitor)
 
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
 ## Support us
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us). 
