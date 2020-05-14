@@ -4,7 +4,6 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-disk-monitor/run-tests?label=tests)](https://github.com/spatie/laravel-disk-monitor/actions?query=workflow%3Arun-tests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-disk-monitor.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-disk-monitor)
 
-
 ## Support us
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us). 
