@@ -1,10 +1,10 @@
 <?php
 
-namespace Spatie\Skeleton\Commands;
+namespace Spatie\DiskMonitor\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class RecordDiskMetrics extends Command
 {
     public $signature = 'skeleton';
 

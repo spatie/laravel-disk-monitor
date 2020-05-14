@@ -1,9 +1,10 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace Spatie\DiskMonitor\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
-use Spatie\Skeleton\SkeletonServiceProvider;
+use Spatie\DiskMonitor\DiskMonitorServiceProvider;
+use Spatie\DiskMonitor\SkeletonServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -17,7 +18,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            DiskMonitorServiceProvider::class,
         ];
     }
 
@@ -30,9 +31,7 @@ class TestCase extends Orchestra
             'prefix' => '',
         ]);
 
-        /*
-        include_once __DIR__.'/../database/migrations/create_skeleton_tables.php.stub';
-        (new CreatePackageTables())->up();
-        */
+        include_once __DIR__.'/../database/migrations/create_disk_monitor_tables.php.stub';
+        (new \CreateDiskMonitorTables())->up();
     }
 }

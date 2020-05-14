@@ -21,13 +21,13 @@ composer require spatie/package-skeleton-laravel
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="Spatie\DiskMonitor\SkeletonServiceProvider" --tag="migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Spatie\DiskMonitor\SkeletonServiceProvider" --tag="config"
 ```
 
 This is the contents of the published config file:
@@ -40,7 +40,7 @@ return [
 ## Usage
 
 ``` php
-$skeleton = new Spatie\Skeleton();
+$skeleton = new Spatie\DiskMonitor();
 echo $skeleton->echoPhrase('Hello, Spatie!');
 ```
 

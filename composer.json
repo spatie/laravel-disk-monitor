@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src"
+            "Spatie\\DiskMonitor\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Spatie\\DiskMonitor\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -44,11 +44,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
-            }
+                "Spatie\\DiskMonitor\\DiskMonitorServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",
