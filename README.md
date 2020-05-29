@@ -1,5 +1,11 @@
 # Monitor metrics of Laravel disks
 
+laravel-disk-monitor can monitor the usage of the filesystems configured in Laravel. Currently only the amount of files a disk contains is monitored.
+
+This package was initially build in the "Let's build a package together" video of the [Laravel Package Training](https://laravelpackage.training) video course.
+
+If you've seen the entire video course, and want to practice creating a PR on this repo, please do so!
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-disk-monitor.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-disk-monitor)
 ![run-tests](https://github.com/spatie/laravel-disk-monitor/workflows/run-tests/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-disk-monitor.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-disk-monitor)
@@ -34,15 +40,46 @@ This is the contents of the published config file:
 
 ```php
 return [
+    /*
+     * The names of the disk you want to monitor.
+     */
+    'disk_names' => [
+        'local',
+    ],
 ];
+```
+
+Finally, you should schedule the `Spatie\DiskMonitor\Commands\RecordsDiskMetricsCommand` to run daily.
+
+```php
+// in app/Console/Kernel.php
+
+use \Spatie\DiskMonitor\Commands\RecordsDiskMetricsCommand;
+
+class Kernel extends ConsoleKernel
+{
+    protected function schedule(Schedule $schedule)
+    {
+       // ...
+        $schedule->command(RecordsDiskMetricsCommand::class)->daily();
+    }
+}
+
 ```
 
 ## Usage
 
-``` php
-$skeleton = new Spatie\DiskMonitor();
-echo $skeleton->echoPhrase('Hello, Spatie!');
+You can view the amount of files each monitored disk has, in the `disk_monitor_entries` table.
+
+If you want to view the statistics in the browser add this macro to your routes file.
+
+```php
+// in a routes files
+
+Route::diskMonitor('my-disk-monitor-url');
 ```
+
+Now, you can see all statics when browsing `/my-disk-monitor-url`. Of course, you can use any url you want when using the `diskMonitor` route macro. We highly recommand using the `auth` middleware for this route, so guests can't see any data regarding your disks.
 
 ## Testing
 
