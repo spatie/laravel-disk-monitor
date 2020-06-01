@@ -1,14 +1,14 @@
 # Monitor metrics of Laravel disks
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-disk-monitor.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-disk-monitor)
+![run-tests](https://github.com/spatie/laravel-disk-monitor/workflows/run-tests/badge.svg)
+[![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-disk-monitor.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-disk-monitor)
+
 laravel-disk-monitor can monitor the usage of the filesystems configured in Laravel. Currently only the amount of files a disk contains is monitored.
 
 This package was initially build in the "Let's build a package together" video of the [Laravel Package Training](https://laravelpackage.training) video course.
 
 If you've seen the entire video course, and want to practice creating a PR on this repo, please do so!
-
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-disk-monitor.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-disk-monitor)
-![run-tests](https://github.com/spatie/laravel-disk-monitor/workflows/run-tests/badge.svg)
-[![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-disk-monitor.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-disk-monitor)
 
 ## Support us
 
