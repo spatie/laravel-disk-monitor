@@ -61,7 +61,7 @@ class DiskMonitorServiceProvider extends ServiceProvider
     {
         Route::macro('diskMonitor', function (string $prefix) {
             Route::prefix($prefix)->group(function () {
-                Route::get('/', '\Spatie\DiskMonitor\Http\Controllers\DiskMetricsController');
+                Route::get('/', '\\' . DiskMetricsController::class);
             });
         });
 
