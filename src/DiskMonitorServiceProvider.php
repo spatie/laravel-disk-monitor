@@ -5,6 +5,7 @@ namespace Spatie\DiskMonitor;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Spatie\DiskMonitor\Commands\RecordDiskMetricsCommand;
+use Spatie\DiskMonitor\Http\Controllers\DiskMetricsController;
 
 class DiskMonitorServiceProvider extends ServiceProvider
 {
