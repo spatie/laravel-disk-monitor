@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-disk-monitor.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-disk-monitor)
 ![Test Statusd](https://github.com/spatie/laravel-disk-monitor/workflows/run-tests/badge.svg)
-![Code Style Status](https://github.com/spatie/laravel-disk-monitor/workflows/php-cs-fixer/badge.svg)
+![Code Style Status](https://github.com/spatie/laravel-disk-monitor/workflows/Check%20&%20fix%20styling/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-disk-monitor.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-disk-monitor)
 
 laravel-disk-monitor can monitor the usage of the filesystems configured in Laravel. Currently only the amount of files a disk contains is monitored.
