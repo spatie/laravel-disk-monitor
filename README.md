@@ -13,7 +13,7 @@ If you've seen the entire video course, and want to practice creating a PR on th
 
 ## Support us
 
-[![Image](https://github-ads.s3.eu-central-1.amazonaws.com/laravel-disk-monitor.jpg)](https://spatie.be/github-ad-click/laravel-disk-monitor)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-disk-monitor.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-disk-monitor)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
