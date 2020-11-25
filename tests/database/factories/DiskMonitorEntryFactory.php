@@ -7,6 +7,6 @@ use Spatie\DiskMonitor\Models\DiskMonitorEntry;
 $factory->define(DiskMonitorEntry::class, function (Generator $faker) {
     return [
         'disk_name' => $faker->word,
-        'file_count' => rand(0, 10)
+        'file_count' => rand(0, 10),
     ];
 });
