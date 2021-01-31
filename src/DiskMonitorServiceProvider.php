@@ -36,7 +36,7 @@ class DiskMonitorServiceProvider extends ServiceProvider
             __DIR__ . '/../resources/views' => base_path('resources/views/vendor/disk-monitor'),
         ], 'views');
 
-        if (! class_exists('CreatePackageTables')) {
+        if (! class_exists('CreateDiskMonitorTables')) {
             $this->publishes([
                 __DIR__ . '/../database/migrations/create_disk_monitor_tables.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_disk_monitor_tables.php'),
             ], 'migrations');
