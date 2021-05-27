@@ -8,5 +8,6 @@ $factory->define(DiskMonitorEntry::class, function (Generator $faker) {
     return [
         'disk_name' => $faker->word,
         'file_count' => rand(0, 10),
+        'disk_size' => rand(0, 10),
     ];
 });

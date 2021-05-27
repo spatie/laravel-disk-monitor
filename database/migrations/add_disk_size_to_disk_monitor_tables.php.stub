@@ -1,0 +1,19 @@
+<?php
+
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddDiskSizeToDiskMonitorTables extends Migration
+{
+    public function up()
+    {
+        Schema::table('disk_monitor_entries', function (Blueprint $table) {
+            $table
+                ->unsignedBigInteger('disk_size')
+                ->comment('Disk size in byte')
+                ->after('file_count');
+        });
+    }
+}
