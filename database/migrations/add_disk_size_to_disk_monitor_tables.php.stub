@@ -13,6 +13,7 @@ class AddDiskSizeToDiskMonitorTables extends Migration
             $table
                 ->unsignedBigInteger('disk_size')
                 ->comment('Disk size in byte')
+                ->default(0)
                 ->after('file_count');
         });
     }
