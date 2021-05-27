@@ -2,8 +2,10 @@
 
 namespace Spatie\DiskMonitor;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 use Spatie\DiskMonitor\Commands\RecordDiskMetricsCommand;
 use Spatie\DiskMonitor\Http\Controllers\DiskMetricsController;
 
@@ -74,17 +76,47 @@ class DiskMonitorServiceProvider extends ServiceProvider
 
     protected function registerMigrations(): void
     {
-//        dd(class_exists('CreateDiskMonitorTables'));
-        if (! class_exists('CreateDiskMonitorTables')) {
-            $this->publishes([
-                __DIR__ . '/../database/migrations/create_disk_monitor_tables.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_disk_monitor_tables.php'),
-            ], 'migrations');
+        $migrationFileNames = [
+            'create_disk_monitor_tables',
+            'add_disk_size_to_disk_monitor_tables',
+        ];
+
+        $now = Carbon::now();
+        foreach ($migrationFileNames as $migrationFileName) {
+            if (! $this->migrationFileExists($migrationFileName)) {
+                $this->publishes([
+                    __DIR__ . "/../database/migrations/{$migrationFileName}.php.stub" => with($migrationFileName, function ($migrationFileName) use ($now) {
+                        $migrationPath = 'migrations/';
+
+                        if (Str::contains($migrationFileName, '/')) {
+                            $migrationPath .= Str::of($migrationFileName)->beforeLast('/')->finish('/');
+                            $migrationFileName = Str::of($migrationFileName)->afterLast('/');
+                        }
+
+                        return database_path($migrationPath . $now->addSecond()->format('Y_m_d_His') . '_' . Str::of($migrationFileName)->snake()->finish('.php'));
+                    }),
+                ], 'migrations');
+            }
+        }
+    }
+
+    protected function migrationFileExists(string $migrationFileName): bool
+    {
+        $migrationsPath = 'migrations/';
+
+        $len = strlen($migrationFileName) + 4;
+
+        if (Str::contains($migrationFileName, '/')) {
+            $migrationsPath .= Str::of($migrationFileName)->beforeLast('/')->finish('/');
+            $migrationFileName = Str::of($migrationFileName)->afterLast('/');
         }
 
-//        if (! class_exists('AddDiskSizeToDiskMonitorTables')) {
-//            $this->publishes([
-//                __DIR__ . '/../database/migrations/add_disk_size_to_disk_monitor_tables.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_add_disk_size_to_disk_monitor_tables.php'),
-//            ], 'migrations');
-//        }
+        foreach (glob(database_path("${migrationsPath}*.php")) as $filename) {
+            if ((substr($filename, -$len) === $migrationFileName . '.php')) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
