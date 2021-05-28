@@ -9,7 +9,7 @@
             <th>Recorded at</th>
         </tr>
     </thead>
-    
+
     <tbody>
         @foreach($entries as $entry)
             <tr>
