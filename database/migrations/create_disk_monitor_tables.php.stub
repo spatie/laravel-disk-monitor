@@ -17,4 +17,9 @@ class CreateDiskMonitorTables extends Migration
             $table->timestamps();
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('disk_monitor_entries');
+    }
 }

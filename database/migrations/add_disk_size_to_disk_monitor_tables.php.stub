@@ -17,4 +17,11 @@ class AddDiskSizeToDiskMonitorTables extends Migration
                 ->after('file_count');
         });
     }
+
+    public function down()
+    {
+        Schema::table('disk_monitor_entries', function(Blueprint $table) {
+            $table->dropColumn('disk_size');
+        });
+    }
 }
