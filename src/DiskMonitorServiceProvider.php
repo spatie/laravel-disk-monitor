@@ -2,8 +2,10 @@
 
 namespace Spatie\DiskMonitor;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 use Spatie\DiskMonitor\Commands\RecordDiskMetricsCommand;
 use Spatie\DiskMonitor\Http\Controllers\DiskMetricsController;
 
@@ -36,11 +38,7 @@ class DiskMonitorServiceProvider extends ServiceProvider
             __DIR__ . '/../resources/views' => base_path('resources/views/vendor/disk-monitor'),
         ], 'views');
 
-        if (! class_exists('CreateDiskMonitorTables')) {
-            $this->publishes([
-                __DIR__ . '/../database/migrations/create_disk_monitor_tables.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_disk_monitor_tables.php'),
-            ], 'migrations');
-        }
+        $this->registerMigrations();
 
         return $this;
     }
@@ -74,5 +72,51 @@ class DiskMonitorServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'disk-monitor');
 
         return $this;
+    }
+
+    protected function registerMigrations(): void
+    {
+        $migrationFileNames = [
+            'create_disk_monitor_tables',
+            'add_disk_size_to_disk_monitor_tables',
+        ];
+
+        $now = Carbon::now();
+        foreach ($migrationFileNames as $migrationFileName) {
+            if (! $this->migrationFileExists($migrationFileName)) {
+                $this->publishes([
+                    __DIR__ . "/../database/migrations/{$migrationFileName}.php.stub" => with($migrationFileName, function ($migrationFileName) use ($now) {
+                        $migrationPath = 'migrations/';
+
+                        if (Str::contains($migrationFileName, '/')) {
+                            $migrationPath = Str::finish(Str::beforeLast($migrationFileName, '/'), '/');
+                            $migrationFileName = Str::afterLast($migrationFileName, '/');
+                        }
+
+                        return database_path($migrationPath . $now->addSecond()->format('Y_m_d_His') . '_' . Str::finish(Str::snake($migrationFileName), '.php'));
+                    }),
+                ], 'migrations');
+            }
+        }
+    }
+
+    protected function migrationFileExists(string $migrationFileName): bool
+    {
+        $migrationsPath = 'migrations/';
+
+        $len = strlen($migrationFileName) + 4;
+
+        if (Str::contains($migrationFileName, '/')) {
+            $migrationsPath = Str::finish(Str::beforeLast($migrationFileName, '/'), '/');
+            $migrationFileName = Str::afterLast($migrationFileName, '/');
+        }
+
+        foreach (glob(database_path("${migrationsPath}*.php")) as $filename) {
+            if ((substr($filename, -$len) === $migrationFileName . '.php')) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

@@ -10,6 +10,7 @@ class DiskMonitorEntry extends Model
 
     public $casts = [
         'file_count' => 'integer',
+        'disk_size' => 'integer',
     ];
 
     public static function last(): ?self
