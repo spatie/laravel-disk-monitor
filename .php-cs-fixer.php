@@ -3,7 +3,6 @@
 $finder = Symfony\Component\Finder\Finder::create()
     ->notPath('bootstrap/*')
     ->notPath('storage/*')
-    ->notPath('storage/*')
     ->notPath('resources/view/mail/*')
     ->in([
         __DIR__ . '/src',
@@ -20,7 +19,7 @@ return $config
     ->setRules([
         '@PSR2' => true,
         'array_syntax' => ['syntax' => 'short'],
-        'ordered_imports' => ['sortAlgorithm' => 'alpha'],
+        'ordered_imports' => ['sort_algorithm' => 'alpha'],
         'no_unused_imports' => true,
         'not_operator_with_successor_space' => true,
         'trailing_comma_in_multiline' => true,
