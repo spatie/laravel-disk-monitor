@@ -89,11 +89,11 @@ class DiskMonitorServiceProvider extends ServiceProvider
                         $migrationPath = 'migrations/';
 
                         if (Str::contains($migrationFileName, '/')) {
-                            $migrationPath .= Str::of($migrationFileName)->beforeLast('/')->finish('/');
-                            $migrationFileName = Str::of($migrationFileName)->afterLast('/');
+                            $migrationPath = Str::finish(Str::beforeLast($migrationFileName, '/'), '/');
+                            $migrationFileName = Str::afterLast($migrationFileName, '/');
                         }
 
-                        return database_path($migrationPath . $now->addSecond()->format('Y_m_d_His') . '_' . Str::of($migrationFileName)->snake()->finish('.php'));
+                        return database_path($migrationPath . $now->addSecond()->format('Y_m_d_His') . '_' . Str::finish(Str::snake($migrationFileName), '.php'));
                     }),
                 ], 'migrations');
             }
@@ -107,8 +107,8 @@ class DiskMonitorServiceProvider extends ServiceProvider
         $len = strlen($migrationFileName) + 4;
 
         if (Str::contains($migrationFileName, '/')) {
-            $migrationsPath .= Str::of($migrationFileName)->beforeLast('/')->finish('/');
-            $migrationFileName = Str::of($migrationFileName)->afterLast('/');
+            $migrationsPath = Str::finish(Str::beforeLast($migrationFileName, '/'), '/');
+            $migrationFileName = Str::afterLast($migrationFileName, '/');
         }
 
         foreach (glob(database_path("${migrationsPath}*.php")) as $filename) {
