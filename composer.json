@@ -16,12 +16,13 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^8.0",
         "illuminate/console": "^8.0",
         "illuminate/database": "^8.0",
         "illuminate/http": "^8.0",
         "illuminate/support": "^8.0",
-        "laravel/legacy-factories": "^1.0"
+        "laravel/legacy-factories": "^1.0",
+        "spatie/laravel-package-tools": "^1.9"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
