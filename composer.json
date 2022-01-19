@@ -31,7 +31,6 @@
         "psr-4": {
             "Spatie\\DiskMonitor\\": "src",
             "Spatie\\DiskMonitor\\Database\\Factories\\": "database/factories"
-
         }
     },
     "autoload-dev": {
