@@ -6,7 +6,6 @@ use CreateDiskMonitorTables;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Route;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Spatie\DiskMonitor\Database\Factories\DiskMonitoryEntryFactory;
 use Spatie\DiskMonitor\DiskMonitorServiceProvider;
 
 class TestCase extends Orchestra
