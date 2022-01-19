@@ -10,7 +10,7 @@ class DiskMetricsControllerTest extends TestCase
     /** @test */
     public function it_can_display_the_list_of_entries()
     {
-        $entry = factory(DiskMonitorEntry::class)->create();
+        $entry = DiskMonitorEntry::factory()->create();
 
         $this
             ->get('disk-monitor')
