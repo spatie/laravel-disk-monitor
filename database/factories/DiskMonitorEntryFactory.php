@@ -5,7 +5,7 @@ namespace Spatie\DiskMonitor\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Spatie\DiskMonitor\Models\DiskMonitorEntry;
 
-class DiskMonitoryEntryFactory extends Factory
+class DiskMonitorEntryFactory extends Factory
 {
     protected $model = DiskMonitorEntry::class;
 
