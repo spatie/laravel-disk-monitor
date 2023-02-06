@@ -10,12 +10,12 @@ use Spatie\DiskMonitor\DiskMonitorServiceProvider;
 
 class TestCase extends Orchestra
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => dd('Spatie\\DiskMonitor\\Database\\Factories\\'.class_basename($modelName).'Factory')
+            fn (string $modelName) => '\\Spatie\\DiskMonitor\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
 
         Route::diskMonitor('disk-monitor');
@@ -30,14 +30,14 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', [
+        config()->set('database.default', 'sqlite');
+        config()->set('database.connections.sqlite', [
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
         ]);
 
-        include_once __DIR__.'/../database/migrations/create_disk_monitor_tables.php.stub';
+        include_once __DIR__ . '/../database/migrations/create_disk_monitor_tables.php.stub';
         (new CreateDiskMonitorTables())->up();
     }
 }
