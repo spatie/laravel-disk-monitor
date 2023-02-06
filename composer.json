@@ -25,6 +25,7 @@
     },
     "require-dev": {
         "orchestra/testbench": "^6.0|^7.0",
+        "pestphp/pest": "^1.22",
         "phpunit/phpunit": "^9.0"
     },
     "autoload": {
@@ -47,7 +48,8 @@
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            "composer/package-versions-deprecated": true
+            "composer/package-versions-deprecated": true,
+            "pestphp/pest-plugin": true
         }
     },
     "extra": {
